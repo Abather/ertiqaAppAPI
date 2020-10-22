@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Ads
+  version: '1.0'
+servers:
+  - url: 'https://ertiqa.svod.app/api/unspokenname'
+paths:
+  '/topad/{photoSizeID}':
+    parameters:
+      - schema:
+          type: string
+        name: photoSizeID
+        in: path
+        required: true
+    get:
+      summary: Get Top Ads
+      tags:
+        - API
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                example-1:
+                  value:
+                    adLink: /api/unspokenname/link/3
+                    adPhoto: 'http://ertiqa.svod.app/storage/BAN/BA_20201007181842.png'
+                    description: null
+                    title: '123'
+      operationId: get-topad-photoSizeID
+      description: return ad with size that specificed
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Accept
+          required: true
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+  '/rightad/{photoSizeID}':
+    parameters:
+      - schema:
+          type: string
+        name: photoSizeID
+        in: path
+        required: true
+    get:
+      summary: Get Right Ads
+      tags:
+        - API
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                example-1:
+                  value:
+                    adLink: /api/unspokenname/link/2
+                    adPhoto: 'http://ertiqa.svod.app/storage/BAN/BA_20201006130653.jpg'
+                    description: تفاصيل الاعلانات
+                    title: اعلان جديد
+      operationId: get-rightad-photoSizeID
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Accept
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+  '/link/{adID}':
+    parameters:
+      - schema:
+          type: string
+        name: adID
+        in: path
+        required: true
+    get:
+      summary: Ad Link
+      tags:
+        - API
+      responses:
+        '200':
+          description: OK
+      operationId: get-link-adID
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Accept
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+      description: Will redirect user to the webpage that linked with the ad
+components:
+  schemas: {}
+  securitySchemes: {}
+tags:
+  - name: API
